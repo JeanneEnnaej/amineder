@@ -12,15 +12,6 @@ categories.each do |category|
 end
 
 
-# sport = Category.create {
-#   name: sport
-# }
-# sport_moods.each do |mood|
-#   Mood.create {
-#     name: mood,
-
-#   }
-# end
 
 # sport_moods = %w[ dynamique joueur competitif ]
 # romantique_moods = %w[ reveur drageur calin ]
