@@ -2,7 +2,9 @@ class AminesController < ApplicationController
   skip_before_action :authenticate_user!, only: :search
 
   def search
-    @amines = Amine.where("name LIKE ? or mood LIKE ? or category LIKE ?", "%"+ params[:query] +"%")
+    params[:query] ? query = "%" + params[:query] + "%" : query = ""
+
+    @amines = Amine.joins(mood: :categories).where("amines.name LIKE ? or moods.name LIKE ? or categories.name LIKE ?", query, query, query)
   end
 
   def new
