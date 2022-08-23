@@ -1,8 +1,8 @@
-<%= simple_form_for(@amine) do |f| %>
+<%= simple_form_for(amine) do |f| %>
   <%= f.input :name %>
   <%= f.input :price %>
   <%= f.input :description %>
-  <%= f.select :moods, Mood.all %>
+  <%= f.input :mood_id, collection: Mood.all %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit %>
 <% end %>

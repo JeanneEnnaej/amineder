@@ -7,4 +7,5 @@ class Amine < ApplicationRecord
   validates :name, uniqueness: true, length: { minimum: 4 }
   validates :price, numericality: { only_integer: true }
   validates :description, length: { minimum: 15 }
+  validates :photos, presence: true
 end

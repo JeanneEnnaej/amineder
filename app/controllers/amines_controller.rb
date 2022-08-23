@@ -5,7 +5,7 @@ class AminesController < ApplicationController
   def search
     params[:query] ? query = "%" + params[:query] + "%" : query = ""
 
-    @amines = Amine.joins(mood: :categories).where("amines.name LIKE ? or moods.name LIKE ? or categories.name LIKE ?", query, query, query)
+    @amines = Amine.joins(mood: :categories).where("amines.name LIKE ? or moods.name LIKE ? or categories.name LIKE ?", query, query, query).distinct
   end
 
   def new
@@ -15,20 +15,20 @@ class AminesController < ApplicationController
   def create
     @amine = Amine.new(amine_params)
     @amine.owner = current_user
-    if @amine.save
-      redirect_to account_amines_path
-    else
-      render "home", status: :unprocessable_entity
-    end
+    @amine.save
+
+    redirect_to account_amines_path
   end
 
   def user_index
-    @amines = Amine.where(user: current_user)
+    @amines = Amine.where("amines.owner_id = ?", current_user)
   end
 
   def destroy
     @amine = Amine.find(params[:id])
     @amine.destroy
+
+    redirect_to account_amines_path, status: :see_other
   end
 
   private
