@@ -22,6 +22,11 @@ class AminesController < ApplicationController
     @amines = Amine.where(user: current_user)
   end
 
+  def destroy
+    @amine = Amine.find(params[:id])
+    @amine.destroy
+  end
+
   private
 
   def amine_params
