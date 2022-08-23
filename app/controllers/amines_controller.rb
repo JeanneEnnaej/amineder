@@ -1,6 +1,6 @@
 class AminesController < ApplicationController
   skip_before_action :authenticate_user!, only: :search
-  has_many_attached :photos
+
 
   def search
     params[:query] ? query = "%" + params[:query] + "%" : query = ""
