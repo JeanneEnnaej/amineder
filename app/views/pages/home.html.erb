@@ -17,5 +17,7 @@
   <p>Caratère<%= amine.mood.name %></p>
   <p>Description<%= amine.description %></p>
   <p><%= amine.price %>€</p>
-  <p><%= link_to 'Supprimer', amine_path(amine), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %></p>
 <% end %>
+
+
+<%= link_to 'Voir tous', search_amines_path(query: "")%>
