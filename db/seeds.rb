@@ -134,4 +134,26 @@ culture.category = Category.find_by_name("culture")
 culture.mood = Mood.find_by_name("calme")
 culture.save
 
+
+p "user"
+
+User.create!(first_name: "Toto", last_name: "Titi", email: "toto@toto.com", password: "totototo")
+User.create!(first_name: "Tata", last_name: "Tutu", email: "tata@tata.com", password: "tatatata")
+
+p "amine"
+
+amine1 = Amine.new(name: "Aminetest", price: 60, description: "Testtetststetstettststetstst")
+amine1.mood = Mood.find_by_name("calme")
+amine1.owner = User.find_by_last_name("Titi")
+amine1.save!
+
+amine2 = Amine.new(name: "Aminebis", price: 80, description: "Testtetststetstettststetststiiiii")
+amine2.mood = Mood.find_by_name("curieux")
+amine2.owner = User.find_by_last_name("Titi")
+amine2.save!
+
+p "reservation"
+
+Reservation.create!(date: "2022/08/24", status: "pending", user_id: 1, amine_id: 1, message: "fdjfkdljfdsbfhjdklj")
+
 p "finito"
