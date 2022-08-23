@@ -21,7 +21,7 @@ end
 # deprime_moods = %w[ nostaligue triste empathique]
 # culture_moods = %w[ cultivé curieux calme ]
 p 'créer moods'
-moods = %w[ dynamique joueur competitif reveur drageur calin festif joyeux calme fatigué ambitieux determiné concentré nostaligue triste empathique  cultivé curieux ]
+moods = %w[ dynamique joueur competitif reveur drageur calin festif joyeux calme fatigué ambitieux determiné concentré nostalgique triste empathique  cultivé curieux ]
 
 moods.each do |mood|
   Mood.create(
@@ -151,6 +151,16 @@ amine2 = Amine.new(name: "Aminebis", price: 80, description: "Testtetststetstett
 amine2.mood = Mood.find_by_name("curieux")
 amine2.owner = User.find_by_last_name("Titi")
 amine2.save!
+
+amine3 = Amine.new(name: "Amineter", price: 70, description: "Testtetststetstettststetststiiiii")
+amine3.mood = Mood.find_by_name("festif")
+amine3.owner = User.find_by_last_name("Titi")
+amine3.save!
+
+amine4 = Amine.new(name: "Aminequadro", price: 70, description: "Testtetststetstettststetststiiiii")
+amine4.mood = Mood.find_by_name("dynamique")
+amine4.owner = User.find_by_last_name("Titi")
+amine4.save!
 
 p "reservation"
 
