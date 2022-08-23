@@ -1,0 +1,29 @@
+.header {
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 2% 10px;
+    background-color: $color-primary;
+    
+
+    &__right {
+      &__SearchBarre {
+        display: flex;
+        flex-direction: column;
+        
+      }
+
+    }
+
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+
+}
