@@ -3,7 +3,7 @@ class Reservation < ApplicationRecord
   belongs_to :amine
 
   validates :date, presence: true, uniqueness: { scope: :amine }
-
+  validates :message, presence: true
   validate :reservation_date_cannot_be_in_the_past
 
   def reservation_date_cannot_be_in_the_past
