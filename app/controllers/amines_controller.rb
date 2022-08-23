@@ -1,5 +1,6 @@
 class AminesController < ApplicationController
   skip_before_action :authenticate_user!, only: :search
+  has_many_attached :photos
 
   def search
     @amines = Amine.where("name LIKE ? or mood LIKE ? or category LIKE ?", "%"+ params[:query] +"%")
@@ -31,6 +32,6 @@ class AminesController < ApplicationController
   private
 
   def amine_params
-    params.require(:amine).permit(:name, :price, :description, :mood_id)
+    params.require(:amine).permit(:name, :price, :description, :mood_id, photos: [])
   end
 end
