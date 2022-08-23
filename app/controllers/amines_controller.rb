@@ -30,6 +30,6 @@ class AminesController < ApplicationController
   private
 
   def amine_params
-    params.require(:amine).permit(:name, :price, :description, :mood_id, :owner_id)
+    params.require(:amine).permit(:name, :price, :description, :mood_id)
   end
 end
