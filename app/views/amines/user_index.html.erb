@@ -2,7 +2,7 @@
 
 <% @amines.each do |amine| %>
   <% amine.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
   <p><%= amine.name %></p>
   <p>Caratère<%= amine.mood %></p>
