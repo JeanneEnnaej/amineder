@@ -2,8 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :amines, only: %i(new create destroy) do
+    get :search, on: :collection
+    resources :reservations, only: :create
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :reservations, only: [] do
+    post :decline, on: :member
+    post :accept, on: :member
+  end
+
+  get 'account/amines', to: 'amines#user_index'
+  get 'account/reservations', to: 'reservations#user_index'
 end
