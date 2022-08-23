@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Aminder</h1>
+
+<%= form_with url: search_amines_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Trouves un Amine"
+  %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% @amines.each do |amine| %>
+  <% amine.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <p><%= amine.name %></p>
+  <p>Caratère<%= amine.mood.name %></p>
+  <p>Description<%= amine.description %></p>
+  <p><%= amine.price %>€</p>
+  <p><%= link_to 'Supprimer', amine_path(amine), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %></p>
+<% end %>
