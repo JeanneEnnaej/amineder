@@ -1,0 +1,7 @@
+<%= simple_form_for(@amine) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.select :moods, Mood.all %>
+  <%= f.button :submit %>
+<% end %>

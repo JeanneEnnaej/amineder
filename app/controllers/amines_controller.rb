@@ -1,4 +1,5 @@
 class AminesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :search
 
   def search
     @amines = Amine.where("name LIKE ? or mood LIKE ? or category LIKE ?", "%"+ params[:query] +"%")
@@ -12,7 +13,7 @@ class AminesController < ApplicationController
     @amine = Amine.new(amine_params)
     @amine.owner = current_user
     if @amine.save
-      redirect_to amines_path
+      redirect_to account_amines_path
     else
       render "home", status: :unprocessable_entity
     end
