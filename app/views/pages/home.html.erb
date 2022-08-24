@@ -1,15 +1,64 @@
 <%= render "header" %>
 
 
-<% @amines.each do |amine| %>
-  <%#amine.photos.each do |photo| %>
-    <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <%# end %>
-  <p><%= amine.name %></p>
-  <p>Caratère<%= amine.mood.name %></p>
-  <p>Description<%= amine.description %></p>
-  <p><%= amine.price %>€</p>
-<% end %>
+<div class="categories">
+
+  <div class="icone"><i class="fa-solid fa-bicycle"></i><%= link_to 'Sortie sportive', search_amines_path(query: "sport") %></div>
+  <div class="icone"><i class="fa-solid fa-heart"></i><%= link_to 'Soirée romantique', search_amines_path(query: "romantique") %></div>
+  <div class="icone"><i class="fa-solid fa-champagne-glasses"></i><%= link_to 'Sortie festive', search_amines_path(query: "party") %></div>
+  <div class="icone"><i class="fa-solid fa-couch"></i><%= link_to 'Sortie tranquille', search_amines_path(query: "netflix") %></div>
+  <div class="icone"><i class="fa-solid fa-briefcase"></i><%= link_to 'Travail', search_amines_path(query: "travail") %></div>
+  <div class="icone"><i class="fa-solid fa-face-sad-tear"></i><%= link_to 'Sortie déprime', search_amines_path(query: "déprime") %></div>
+  <div class="icone"><i class="fa-solid fa-building-columns"></i><%= link_to 'Sortie culturelle', search_amines_path(query: "culture") %></div>
+
+</div>
+
+<div id="bordure"></div>
+
+<div class="homecontainer">
 
 
-<%= link_to 'Voir tous', search_amines_path(query: "")%>
+<h3>Voici quelques Amines qui pourraient vous plaire :</h3>
+<%# <%= form_with url: search_amines_path, method: :get do %>
+  <%#= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Trouves un Amine"
+  %>
+  <%#= submit_tag "Search" %>
+<%# end %>
+  <div>
+    <div class="classcard">
+
+      <div class= "smallcards">
+        <% @amines.first(2).each do |amine| %>
+          <div class="homecard">
+            <%= cl_image_tag amine.photos.first.key, height:250 , width: 350, crop: :fill %>
+            <div class="textcard">
+              <div>
+                <p><%= amine.name %></p>
+                <p><%= amine.mood.name %></p>
+              </div>
+            <div class="price">
+            <p><%= amine.price %>€</p>
+            </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+        <div class="bighomecard">
+          <%= cl_image_tag @amines.last.photos.first.key, height:550 , width: 650, crop: :fill %>
+          <div class="bigtextcard">
+            <div>
+              <p><%= @amines.last.name %></p>
+              <p><%= @amines.last.mood.name %></p>
+            </div>
+          <div class="price">
+            <p><%= @amines.last.price %>€</p>
+          </div>
+          </div>
+        </div>
+  </div>
+<p id="voirtous"><%= link_to 'Voir tous ➝', search_amines_path(query: "")%></p>
+</div>

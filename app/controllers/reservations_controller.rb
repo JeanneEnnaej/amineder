@@ -2,7 +2,11 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
-    @reservation.save
+    @reservation.message = "dsfghjkjhgfdsfghjkhgfdsfghjkhgfdgh"
+    @reservation.date = "2022/09/30"
+    @reservation.save!
+
+    redirect_to account_reservations_path
   end
 
   def decline
@@ -14,12 +18,12 @@ class ReservationsController < ApplicationController
   end
 
   def user_index
-    @reservations = Reservation.where(user: current_user)
+    @reservations = Reservation.where("reservations.user_id = ?", current_user)
   end
 
   private
 
   def reservation_params
-    params.require(reservation).permit(:date, :amine_id)
+    params.permit(:date, :amine_id)
   end
 end

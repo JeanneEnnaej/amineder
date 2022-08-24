@@ -2,14 +2,15 @@
 
 <% if @amines.size > 0 %>
   <%@amines.each do |amine| %>
-    <%# amine.photos.each do |photo| %>
-      <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <%# end %>
+    <% amine.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <h2>Amine name => <%= amine.name %></h2>
     <p>Caractère => <%= amine.mood.name %></p>
     <p>Description => <%= amine.description %></p>
     <p>Price => <%= amine.price %>€</p>
     <p><%= link_to 'Supprimer', amine_path(amine), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if current_user %></p>
+    <p><%= link_to 'Réserver', amine_reservations_path(amine), data: {turbo_method: :post} if current_user %></p>
   <% end %>
 <% else %>
   <p>No Results</p>

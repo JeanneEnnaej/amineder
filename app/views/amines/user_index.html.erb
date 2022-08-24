@@ -1,12 +1,12 @@
 <h1>user index amine</h1>
 
 <% @amines.each do |amine| %>
-  <%# amine.photos.each do |photo| %>
-    <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <%# end %>
-  <p><%= amine.name %></p>
-  <p>Caratère<%= amine.mood %></p>
-  <p>Description<%= amine.description %></p>
-  <p><%= amine.price %>€</p>
+  <% amine.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <p>Amine Name => <%= amine.name %></p>
+  <p>Caractère => <%= amine.mood.name %></p>
+  <p>Description => <%= amine.description %></p>
+  <p>Price => <%= amine.price %>€</p>
   <p><%= link_to 'Supprimer', amine_path(amine), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %></p>
 <% end %>
