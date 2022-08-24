@@ -16,7 +16,7 @@
         <img src="img/AMINDERLogotxt.png">
         <div class="header__menu__right">
           <div class="header__menu__SearchBarre">
-            <h1>Trouve ton amine parmis notre large sélections</h1>
+            <h1>Trouves ton amine parmi notre large sélection</h1>
             <input type="text" class="header__SearchBarre__input" placeholder="Rechercher">
           </div>
           <div class="header__menu__button__login">
@@ -30,15 +30,16 @@
         </div>
       </div>
       <div class="header__logo">
+        <%= link_to "Accueil", root_path %>
         <%= link_to "S'inscrire", new_user_registration_path %>
         <%= link_to "Connecte", new_user_session_path %>
-        <%= link_to "Decconnect", destroy_user_session_path %>
+        <%= link_to "Deconnecte", destroy_user_session_path %>
         <p>  --  </p>
         <%= link_to "newAmine", new_amine_path %>
         <%= link_to "searchAmine", search_amines_path %>
-        <%= link_to "accountAmine", account_amines_path %>
+        <%= link_to "accountAmines", account_amines_path %>
         <%= link_to "accountReservations", account_reservations_path %>
-      </div>      
+      </div>
     </div>
     <%= yield %>
   </body>
