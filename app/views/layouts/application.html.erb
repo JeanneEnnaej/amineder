@@ -9,26 +9,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-
+  
   <body>
-    <div class="header">
-      <div class="header__menu">
-        <img src="img/AMINDERLogotxt.png">
-        <div class="header__menu__right">
-          <div class="header__menu__SearchBarre">
-            <h1>Trouves ton amine parmi notre large sélection</h1>
-            <input type="text" class="header__SearchBarre__input" placeholder="Rechercher">
-          </div>
-          <div class="header__menu__button__login">
-            <div class="header__button__login__left">
-              <div class="button__login__rectangle"></div>
-              <div class="button__login__rectangle"></div>
-              <div class="button__login__rectangle"></div>
-            </div>
-            <div class="header__button__login__right"></div>
-          </div>
-        </div>
-      </div>
       <div class="header__logo">
         <%= link_to "Accueil", root_path %>
         <%= link_to "S'inscrire", new_user_registration_path %>
@@ -40,7 +22,6 @@
         <%= link_to "accountAmines", account_amines_path %>
         <%= link_to "accountReservations", account_reservations_path %>
       </div>
-    </div>
     <%= yield %>
   </body>
 </html>

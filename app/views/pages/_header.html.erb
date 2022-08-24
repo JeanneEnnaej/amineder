@@ -1,0 +1,32 @@
+<div class="header">
+  <div class="header__menu">
+    <div class="logo"></div>
+    <div class="header__menu__SearchBarre">
+      <h2>Trouve ton amine parmis notre large sélections</h2>
+      <%= form_with url: search_amines_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Trouves un Amine"
+        %>
+    <% end %>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">
+        <svg viewBox="0 0 100 80" width="40" height="40" class="rect--color">
+          <rect width="80" height="15" rx="6"></rect>
+          <rect y="30" width="80" height="15" rx="6"></rect>
+          <rect y="60" width="80" height="15" rx="6"></rect>
+        </svg>
+        <div class="dropbtn--img"></div>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Connexion</a>
+        <a href="#">Inscription</a>
+      </div>
+    </div>    
+  </div>
+</div>
+
+
+    
