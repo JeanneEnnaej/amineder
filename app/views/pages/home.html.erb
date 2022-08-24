@@ -1,13 +1,5 @@
-<h1>Aminder</h1>
+<%= render "header" %>
 
-<%= form_with url: search_amines_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Trouves un Amine"
-  %>
-  <%= submit_tag "Search" %>
-<% end %>
 
 <% @amines.each do |amine| %>
   <%#amine.photos.each do |photo| %>
