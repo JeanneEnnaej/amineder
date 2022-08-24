@@ -1,0 +1,47 @@
+.categories {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 420px;
+  margin-right:420px;
+  margin-top: 0;
+
+  i {
+    color:black;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    // &:hover  {
+    //   color:$color-primary_opacity;
+    // }
+  }
+  a {
+    color:black;
+    font-size: 20px;
+    text-decoration: none;
+    // &:hover  {
+    //   color:$color-primary_opacity;
+    // }
+  }
+
+}
+
+.icone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &:hover  {
+    a {
+      color:$color-primary_opacity;
+    }
+    i {
+      color:$color-primary_opacity;
+    }
+  }
+}
+
+
+#bordure {
+  margin-top: 8px;
+  border-bottom: 1px solid #5D5647;
+
+}
