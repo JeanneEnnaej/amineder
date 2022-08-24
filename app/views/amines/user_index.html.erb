@@ -9,4 +9,6 @@
   <p>Description => <%= amine.description %></p>
   <p>Price => <%= amine.price %>€</p>
   <p><%= link_to 'Supprimer', amine_path(amine), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %></p>
+
+
 <% end %>
