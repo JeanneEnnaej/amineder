@@ -1,9 +1,9 @@
 <h1>user index amine</h1>
 
 <% @amines.each do |amine| %>
-  <%# amine.photos.each do |photo| %>
-    <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <%# end %>
+  <% amine.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <p>Amine Name => <%= amine.name %></p>
   <p>Caractère => <%= amine.mood.name %></p>
   <p>Description => <%= amine.description %></p>
