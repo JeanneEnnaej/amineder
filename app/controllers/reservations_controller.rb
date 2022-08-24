@@ -1,9 +1,9 @@
 class ReservationsController < ApplicationController
+  before_action :set_amine, only: :create
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
-    @reservation.message = "dsfghjkjhgfdsfghjkhgfdsfghjkhgfdgh"
-    @reservation.date = "2022/09/30"
+    @reservation.amine = @amine
     @reservation.save!
 
     redirect_to account_reservations_path
@@ -23,7 +23,11 @@ class ReservationsController < ApplicationController
 
   private
 
+  def set_amine
+    @amine = Amine.find(params[:amine_id])
+  end
+
   def reservation_params
-    params.permit(:date, :amine_id)
+    params.require(:reservation).permit(:date, :message)
   end
 end

@@ -6,6 +6,7 @@ class AminesController < ApplicationController
     params[:query] ? query = "%" + params[:query] + "%" : query = ""
 
     @amines = Amine.joins(mood: :categories).where("amines.name LIKE ? or moods.name LIKE ? or categories.name LIKE ?", query, query, query).distinct
+    @reservation = Reservation.new
   end
 
   def new
