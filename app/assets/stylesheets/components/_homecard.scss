@@ -1,0 +1,57 @@
+.classcard {
+  display: flex;
+}
+
+.classcard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.homecard {
+  height: 320px;
+  width: 350px;
+  margin-top: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+
+.smallcards {
+  display: flex;
+  flex-direction: column;
+}
+
+.bighomecard {
+  height: 670px;
+  width: 650px;
+  margin-top: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.bigtextcard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 16px;
+}
+
+.textcard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 16px;
+
+  p {
+    margin: 0;
+    padding-bottom: 14px;
+  }
+}
+
+.price {
+  display: flex;
+  align-items: center;
+}
