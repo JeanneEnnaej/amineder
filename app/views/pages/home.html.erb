@@ -10,13 +10,13 @@
 <% end %>
 
 <% @amines.each do |amine| %>
-  <%#amine.photos.each do |photo| %>
-    <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <%# end %>
-  <p><%= amine.name %></p>
-  <p>Caratère<%= amine.mood.name %></p>
-  <p>Description<%= amine.description %></p>
-  <p><%= amine.price %>€</p>
+  <%amine.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <p>Amine name => <%= amine.name %></p>
+  <p>Caractère => <%= amine.mood.name %></p>
+  <p>Description => <%= amine.description %></p>
+  <p>Price => <%= amine.price %>€</p>
 <% end %>
 
 
