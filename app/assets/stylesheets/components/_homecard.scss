@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   column-gap: 5%;
+
 }
 
 .homecard {
@@ -17,6 +18,15 @@
     object-fit: cover;
   }
 
+  .card-title {
+    color: $txtcolor-primary;
+    font-weight: bold;
+  }
+
+  .card-mood {
+    color: $txtcolor-subtitle_ligth;
+  }
+
   &:last-child{
     flex-grow: 1;
     img {
@@ -24,6 +34,7 @@
       height: 80vh;
       object-fit: cover;
     }
+
   }
 }
 
@@ -45,6 +56,14 @@
     margin: 0;
     padding-bottom: 14px;
   }
+
+  // .card-title {
+  //   color: $txtcolor-primary;
+  // }
+
+  // .card-mood {
+  //   color: $txtcolor-subtitle_ligth;
+  // }
 }
 
 .price {
