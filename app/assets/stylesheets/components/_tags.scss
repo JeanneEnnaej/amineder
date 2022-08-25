@@ -1,0 +1,13 @@
+.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
+
+  background: $color-secondary_opacity;
+
+  border: 1px solid $color-primary_opacity;
+  border-radius: 10px;
+}

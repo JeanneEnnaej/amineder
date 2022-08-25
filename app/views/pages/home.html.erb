@@ -3,13 +3,54 @@
 
 <div class="categories">
 
-  <div class="icone"><i class="fa-solid fa-bicycle"></i><%= link_to 'Sortie sportive', search_amines_path(query: "sport") %></div>
-  <div class="icone"><i class="fa-solid fa-heart"></i><%= link_to 'Soirée romantique', search_amines_path(query: "romantique") %></div>
-  <div class="icone"><i class="fa-solid fa-champagne-glasses"></i><%= link_to 'Sortie festive', search_amines_path(query: "party") %></div>
-  <div class="icone"><i class="fa-solid fa-couch"></i><%= link_to 'Sortie tranquille', search_amines_path(query: "netflix") %></div>
-  <div class="icone"><i class="fa-solid fa-briefcase"></i><%= link_to 'Travail', search_amines_path(query: "travail") %></div>
-  <div class="icone"><i class="fa-solid fa-face-sad-tear"></i><%= link_to 'Sortie déprime', search_amines_path(query: "déprime") %></div>
-  <div class="icone"><i class="fa-solid fa-building-columns"></i><%= link_to 'Sortie culturelle', search_amines_path(query: "culture") %></div>
+  <div class="link">
+  <%= link_to search_amines_path(query: "sport") do %>
+    <div class="icone"><i class="fa-solid fa-bicycle"></i>
+    <span>Sortie sportive</span></div>
+  <% end %>
+  </div>
+
+  <div class="link">
+  <%= link_to search_amines_path(query: "romantique") do %>
+    <div class="icone"><i class="fa-solid fa-heart"></i>
+    <span>Soirée romantique</span></div>
+  <% end %>
+  </div>
+
+  <div class="link">
+  <%= link_to search_amines_path(query: "party") do %>
+    <div class="icone"><i class="fa-solid fa-champagne-glasses"></i>
+    <span>Soirée festive</span></div>
+  <% end %>
+  </div>
+
+  <div class="link">
+  <%= link_to search_amines_path(query: "netflix") do %>
+    <div class="icone"><i class="fa-solid fa-couch"></i>
+    <span>Soirée tranquille</span></div>
+  <% end %>
+  </div>
+
+  <div class="link">
+  <%= link_to search_amines_path(query: "travail") do %>
+    <div class="icone"><i class="fa-solid fa-briefcase"></i>
+    <span>Soirée studieuse</span></div>
+  <% end %>
+  </div>
+
+  <div class="link">
+  <%= link_to search_amines_path(query: "déprime") do %>
+    <div class="icone"><i class="fa-solid fa-face-sad-tear"></i>
+    <span>Soirée déprime</span></div>
+  <% end %>
+  </div>
+
+  <div class="link">
+  <%= link_to search_amines_path(query: "culture") do %>
+    <div class="icone"><i class="fa-solid fa-building-columns"></i>
+    <span>Sortie culturelle</span></div>
+  <% end %>
+  </div>
 
 </div>
 
@@ -17,8 +58,10 @@
 
 <div class="homecontainer">
 
-
-<h3>Voici quelques Amines qui pourraient vous plaire :</h3>
+<div class="texthome">
+  <h4>Voici quelques Amines qui pourraient vous plaire :</h4>
+  <p id="voirtous"><%= link_to 'Voir tous ➝', search_amines_path(query: "")%></p>
+</div>
 
   <div>
     <div class="classcard">
@@ -28,8 +71,8 @@
             <%= cl_image_tag amine.photos.first.key, crop: :fill %>
             <div class="textcard">
               <div>
-                <p><%= amine.name %></p>
-                <p><%= amine.mood.name %></p>
+                <p class="card-title"><%= amine.name %></p>
+                <p class="card-mood"><%= amine.mood.name %></p>
               </div>
               <div class="price">
                 <p><%= amine.price %>€</p>
@@ -44,8 +87,8 @@
           <%= cl_image_tag @amines.last.photos.first.key, crop: :fill %>
           <div class="textcard">
             <div>
-              <p><%= @amines.last.name %></p>
-              <p><%= @amines.last.mood.name %></p>
+              <p class="card-title"><%= @amines.last.name %></p>
+              <p class="card-mood"><%= @amines.last.mood.name %></p>
             </div>
             <div class="price">
               <p><%= @amines.last.price %>€</p>
