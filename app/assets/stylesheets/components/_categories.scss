@@ -7,6 +7,12 @@
 
 }
 
+a {
+  color:$txtcolor-subtitle_grey;
+  font-size: 20px;
+  text-decoration: none;
+}
+
 .icone {
   display: flex;
   flex-direction: column;
@@ -14,12 +20,6 @@
 
   a, i{
     align-items: center;
-  }
-
-  a {
-    color:$txtcolor-subtitle_grey;
-    font-size: 16px;
-    text-decoration: none;
   }
 
   i {
@@ -40,10 +40,6 @@
       color:$color-primary_opacity;
     }
   }
-  span {
-    color: $txtcolor-subtitle_grey;
-  }
-
 }
 
 
