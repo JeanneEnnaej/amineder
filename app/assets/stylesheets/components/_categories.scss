@@ -1,34 +1,32 @@
 .categories {
   display: flex;
   justify-content: space-around;
-  margin-left: 420px;
-  margin-right:420px;
-  margin-top: 0;
-
-  i {
-    color:black;
-    font-size: 36px;
-    display: flex;
-    justify-content: center;
-    // &:hover  {
-    //   color:$color-primary_opacity;
-    // }
-  }
-  a {
-    color:black;
-    font-size: 20px;
-    text-decoration: none;
-    // &:hover  {
-    //   color:$color-primary_opacity;
-    // }
-  }
-
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 10px;
 }
 
 .icone {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  a, i{
+    align-items: center;
+  }
+
+  a {
+  color:black;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  i {
+    color:black;
+    font-size: 30px;
+    text-align: center;
+  }
+
   &:hover  {
     a {
       color:$color-primary_opacity;
