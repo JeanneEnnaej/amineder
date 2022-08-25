@@ -1,0 +1,35 @@
+<div class="header header--admin">
+    <div class="logo"><%= link_to "", "/" %></div>
+    <div class="header--admin__SearchBarre">
+      <h2>Trouve ton amine parmis notre large sélections</h2>
+      <%= form_with url: search_amines_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Trouves un Amine"
+        %>
+    <% end %>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">
+        <svg viewBox="0 0 100 80" width="40" height="40" class="rect--color">
+          <rect y="15"width="60" height="10" rx="6"></rect>
+          <rect y="30" width="60" height="10" rx="6"></rect>
+          <rect y="45" width="60" height="10" rx="6"></rect>
+        </svg>
+        <div class="dropbtn--img">
+          <img src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3">
+        </div>
+      </button>
+      <div class="dropdown-content">
+        <%= link_to "home", "/" %>
+        <%= link_to "Mes amines", account_amines_path %>
+        <%= link_to "Reservations", account_reservations_path %>
+        <%= link_to "Déconnexion", destroy_user_session_path %>
+      </div>
+    </div> 
+  </div>
+</div>
+
+
+    

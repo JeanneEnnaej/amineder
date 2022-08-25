@@ -11,17 +11,6 @@
   </head>
   
   <body>
-      <div class="header__logo">
-        <%= link_to "Accueil", root_path %>
-        <%= link_to "S'inscrire", new_user_registration_path %>
-        <%= link_to "Connecte", new_user_session_path %>
-        <%= link_to "Deconnecte", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        <p>  --  </p>
-        <%= link_to "newAmine", new_amine_path %>
-        <%= link_to "searchAmine", search_amines_path %>
-        <%= link_to "accountAmines", account_amines_path %>
-        <%= link_to "accountReservations", account_reservations_path %>
-      </div>
     <%= yield %>
   </body>
 </html>
