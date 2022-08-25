@@ -1,16 +1,44 @@
 <%= render "headerAdmin" %>
 
-<h1>user index amine</h1>
-
-<% @amines.each do |amine| %>
-  <% amine.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p>Amine Name => <%= amine.name %></p>
-  <p>Caractère => <%= amine.mood.name %></p>
-  <p>Description => <%= amine.description %></p>
-  <p>Price => <%= amine.price %>€</p>
-  <p><%= link_to 'Supprimer', amine_path(amine), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %></p>
+<div class="usercontainer">
 
 
-<% end %>
+  <div>
+    <h1 class="account-title">Mes amines</h1>
+  </div>
+  <div class = container-filter>
+  <%= link_to "À valider", request.params.merge(sort: "pending") %>
+  <%= link_to "Mes Amines", request.params.except(:sort) %>
+  <%= link_to "Validés", request.params.merge(sort: "accepted") %>
+  </div>
+  <div class="account-container">
+    <div class="accountcard">
+
+    <% @reservations.size == 0 ? contents = @amines : contents = @reservations %>
+      <% contents.each do |content| %>
+        <% if contents.size == @amines.size %>
+          <% object = content %>
+        <% else %>
+          <% object = content.amine  %>
+        <% end %>
+        <div class ="amine-card">
+          <% object.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, crop: :fill %>
+          <% end %>
+          <div class="description-card">
+            <p>Nom <%= object.name %></p>
+            <p>Caractère => <%= object.mood.name %></p>
+            <p>Description => <%= object.description %></p>
+            <p>Prix => <%= object.price %>€</p>
+            <p>Status => <%=content.status if @amines.size == 0 %></p>
+          </div>
+          <div class="btn-container">
+            <div class="icone"><i class="fa-solid fa-check"></i></div>
+            <div class="icone"><i class="fa-solid fa-xmark"></i></div>
+            <div class="icone"><i class="fa-solid fa-question"></i></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

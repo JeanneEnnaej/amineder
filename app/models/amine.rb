@@ -4,6 +4,7 @@ class Amine < ApplicationRecord
   has_many :mood_categories, through: :mood
   has_many :categories, through: :mood_categories
   has_many_attached :photos
+  has_many :reservations
 
   validates :name, :price, :description, presence: true
   validates :name, uniqueness: true, length: { minimum: 4 }

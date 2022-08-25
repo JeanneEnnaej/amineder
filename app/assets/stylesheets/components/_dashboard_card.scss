@@ -1,7 +1,99 @@
-.choice {
-  display: none;
+@import "../config/colors";
+
+
+.account-container{
+  width: 90%;
+  height: 800px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  }
+
+.accountcard {
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  }
+
+.amine-card {
+display: flex;
+flex-direction: row;
+column-gap: 8px;
+height: 250px;
+width: 700px;
+
+  img {
+  object-fit: cover;
+  border-radius: 16px 0px 0px 16px;
+  }
 }
 
-.dashboard-card:hover .choice{
-  display:unset;
+.btn-container {
+  display: block;
+  background-color: $yellow;
+  width: 200px;
+  border-radius: 0px 16px 16px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .icone{
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  }
+}
+
+.icone:hover .fa-check{
+  display: unset;
+  color:$green;
+}
+
+.icone:hover .fa-xmark{
+  display: unset;
+  color:$red;
+}
+
+.icone:hover .fa-question{
+  display: unset;
+  color:$light-gray;
+}
+
+
+.description-card {
+display: flex;
+flex-direction: column;
+
+  p{
+    margin-bottom: auto;
+    display: flex;
+    text-align: left;
+  }
+}
+
+.account-title{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.container-filter{
+display: flex;
+justify-content:space-around;
+padding-left: 50px;
+padding-right: 50px;
+  span{
+  padding: 10px;
+  font-size: 24px;
+  border: 2px solid $light-gray;
+  border-radius: 16px;
+  }
+
+
 }
