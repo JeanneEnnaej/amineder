@@ -10,18 +10,7 @@ export default class extends Controller {
   connect() {
   }
 
-  showPopup(event) {
-    // event.preventDefa  ult();
+  showPopup() {
     this.popupTarget.classList.toggle("display-none");
-    console.log(this.idValue);
   }
-
-  greet() {
-    console.log(this.idValue);
-    this.outputTarget.textContent =
-      `Hello, ${this.idValue.value}!`
-  }
-
-
-
 }
