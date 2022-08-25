@@ -2,14 +2,24 @@
 
 <h1>Mes réservations</h1>
 <h2>Bonjour <%= current_user.first_name %> <%= current_user.last_name %></h2>
-<% @reservations.each do |reservation| %>
-  <% reservation.amine.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p>Prénom nom => <%= reservation.user.first_name %> <%= reservation.user.last_name %></p>
-  <p>Caratère => <%= reservation.amine.mood.name %></p>
-  <p>Description => <%= reservation.message %></p>
-  <p>Prix => <%= reservation.amine.price %>€</p>
-  <p>Date => <%= reservation.date %></p>
+<div class="container">
+  <% @reservations.each do |reservation| %>
+    <div class="dashboard-card">
+      <% reservation.amine.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <p>Prénom nom => <%= reservation.user.first_name %> <%= reservation.user.last_name %></p>
+      <p>Caratère => <%= reservation.amine.mood.name %></p>
+      <p>Description => <%= reservation.message %></p>
+      <p>Prix => <%= reservation.amine.price %>€</p>
+      <p>Date => <%= reservation.date %></p>
 
-<% end %>
+      <% if current_user == reservation.amine.owner %>
+        <div class="choice">
+          <%= link_to "Accepter", accept_reservation_path(reservation) %>
+          <%= link_to "Refuser", decline_reservation_path(reservation) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
