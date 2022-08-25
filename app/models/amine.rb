@@ -1,6 +1,8 @@
 class Amine < ApplicationRecord
   belongs_to :owner, class_name: "User"
   belongs_to :mood
+  has_many :mood_categories, through: :mood
+  has_many :categories, through: :mood_categories
   has_many_attached :photos
   has_many :reservations
 

@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :set_amine, only: :create
+  before_action :set_reservation, only: %i[decline accept]
+
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
@@ -10,11 +12,13 @@ class ReservationsController < ApplicationController
   end
 
   def decline
-    @reservation.update(status: "decline")
+    @reservation.decline!
+    redirect_to test_path
   end
 
   def accept
-    @reservation.update(status: "accepted")
+    @reservation.accept!
+    redirect_to test_path
   end
 
   def user_index
@@ -25,6 +29,10 @@ class ReservationsController < ApplicationController
 
   def set_amine
     @amine = Amine.find(params[:amine_id])
+  end
+
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
   end
 
   def reservation_params

@@ -2,16 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="reservation"
 export default class extends Controller {
-  static targets = ["popup"]
+  static targets = ["popup", "output" ]
+  static values = {
+    id: String,
+  }
 
   connect() {
   }
 
-  showPopup(event) {
-    // event.preventDefa  ult();
+  showPopup() {
     this.popupTarget.classList.toggle("display-none");
   }
-
-
-
 }

@@ -1,0 +1,57 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  &--card {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 16px;
+    width: 70%;
+    height: 80%;
+    padding: 16px;
+
+    .cross {
+      color: $color-primary;
+      font-size: 24px;
+      position: absolute;
+      top: 8%;
+      right: 12%;
+
+      &:hover {
+        color: $txtcolor-primary;
+      }
+    }
+
+    &--amine {
+      flex-grow: 1;
+      max-height: 100%;
+
+      .group--image {
+        height: 60%;
+        width: 100%;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &--form {
+      width: 35%;
+      padding: 16px;
+      border : 1px solid $stroke-ligth;
+      @include box-shadow;
+    }
+  }
+}

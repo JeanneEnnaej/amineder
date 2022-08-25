@@ -2,36 +2,57 @@
 
 <h1>search</h1>
 
-<% if @amines.size > 0 %>
-  <%@amines.each do |amine| %>
-    <% amine.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <h2>Amine name => <%= amine.name %></h2>
-    <p>Caractère => <%= amine.mood.name %></p>
-    <p>Description => <%= amine.description %></p>
-    <p>Price => <%= amine.price %>€</p>
-    <p><%= link_to 'Supprimer', amine_path(amine), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if current_user %>
-    </p>
-
-
-    <div data-controller="reservation">
-
-
-      <span data-action="click->reservation#showPopup"  >Réserver</span>
-
-       <%# amine_reservations_path(amine), data: {turbo_method: :post} if current_user %>
-      <div class="popup display-none" data-reservation-target="popup">
-        <div>
-          <%= simple_form_for([amine, @reservation]) do |f| %>
-            <%= f.input :date %>
-            <%= f.input :message %>
-            <%= f.button :submit %>
-          <% end %>
+<div class="template__card">
+  <% if @amines.size > 0 %>
+    <%@amines.each do |amine| %>
+      <div class="searchcard">
+        <% amine.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"searchcard_image"%>
+        <% end %>
+        <div class="searchcard_infos">
+          <div class="searchcard_infos-left">
+            <h2 class="mgnone"><%= amine.name %></h2>
+          </div>
+          <div class="searchcard_infos-right">
+            <h3 class="mgnone"><%= amine.price %> €</h3>
+          </div>
+        </div>
+        <div class="searchcard_footer" data-controller="reservation">
+          <div class="align-tags">
+            <% amine.categories.each do |category| %>
+              <p class="tags"><%= category.name %></p>
+            <% end %>
+          </div>
+          <span data-action="click->reservation#showPopup" class="btn">Réserver</span>
+          <div class="popup display-none" data-reservation-target="popup">
+            <div class="popup--card">
+              <div class="popup--card--amine">
+                <div class="group--image">
+                    <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                    <!-- <div>
+                      <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                      <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                    </div> -->
+                </div>
+                <h2>Amine name => <%= amine.name %></h2>
+                <p>Caractère => <%= amine.mood.name %></p>
+                <p>Description => <%= amine.description %></p>
+                <p>Price => <%= amine.price %>€</p>
+              </div>
+              <div class="popup--card--form">
+                <%= simple_form_for([amine, @reservation]) do |f| %>
+                  <%= f.input :date %>
+                  <%= f.input :message %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+              <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  <% else %>
+    <p>No Results</p>
   <% end %>
-<% else %>
-  <p>No Results</p>
-<% end %>
+</div>

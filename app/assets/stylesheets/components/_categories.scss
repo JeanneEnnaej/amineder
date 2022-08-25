@@ -4,6 +4,13 @@
   margin: 0 auto;
   width: 90%;
   padding-top: 10px;
+
+}
+
+a {
+  color:$txtcolor-subtitle_grey;
+  font-size: 18px;
+  text-decoration: none;
 }
 
 .icone {
@@ -15,23 +22,21 @@
     align-items: center;
   }
 
-  a {
-  color:black;
-    font-size: 16px;
-    text-decoration: none;
-  }
-
   i {
-    color:black;
+    color:$txtcolor-subtitle_grey;
     font-size: 30px;
     text-align: center;
   }
 
+
+}
+
+.link {
   &:hover  {
-    a {
+    i {
       color:$color-primary_opacity;
     }
-    i {
+    a {
       color:$color-primary_opacity;
     }
   }
@@ -40,6 +45,6 @@
 
 #bordure {
   margin-top: 8px;
-  border-bottom: 1px solid #5D5647;
+  border-bottom: 1px solid $txtcolor-subtitle_grey;
 
 }
