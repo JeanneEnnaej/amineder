@@ -9,4 +9,8 @@ skip_before_action :authenticate_user!, only: :home
     end
     @amine = Amine.where("")
   end
+
+  def test
+    @reservations = Reservation.all
+  end
 end
