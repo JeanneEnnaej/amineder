@@ -1,0 +1,26 @@
+@import "../components/input";
+
+
+.maincontainer {
+  margin:0 30%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  .form-title{
+    h4 {
+      width: 100%;
+      border-bottom: 1px solid #000;
+      line-height: 0.1em;
+      margin: 10px 0 20px;
+      padding: auto;
+   }
+
+   h4 span {
+       background:#fff;
+       padding:0 10px;
+   }
+
+  }
+
+}
