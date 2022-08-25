@@ -22,7 +22,23 @@ class AminesController < ApplicationController
   end
 
   def user_index
-    @amines = Amine.where("amines.owner_id = ?", current_user)
+    if params[:sort].present?
+      ## les resas à valider
+      # if params[:sort] == "accepted"
+      #   @amines = Reservation.where(status: "accepted").map(&:amine)
+      # elsif params[:sort] == "pending"
+      #   @amines = Reservation.where(status: "pending").map(&:amine)
+      # end
+      @reservations = Reservation.where("status = ?", params[:sort])
+      @amines = []
+      #.map(&:amine)
+
+  ##  Mes Amines
+    else
+      puts "tous mes amines"
+      @amines = Amine.where(owner: current_user)
+      @reservations = []
+    end
   end
 
   def destroy

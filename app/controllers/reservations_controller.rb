@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
   end
 
   def accept
-    @reservation.update(status: "accept")
+    @reservation.update(status: "accepted")
   end
 
   def user_index
