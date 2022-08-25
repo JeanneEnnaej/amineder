@@ -1,7 +1,13 @@
 .logo {
-  position: fixed;
-  left: 80px;
   background-image: url("img/logos/AMINDERLogotxt.png");
   width: 117px;
   height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    width: 117px;
+    height: 40px;
+  }
 }

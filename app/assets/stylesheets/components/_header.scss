@@ -1,17 +1,34 @@
-@import "dropdown.scss";
-@import "logo.scss";
-@import "input_search.scss";
-
 .header {
-  &__menu {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  max-height: 136px;
+  padding: 20px 3% 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background-color: $color-primary;
+
+  &__SearchBarre {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px 2% 80px;
-    background-color: $color-primary;
+    flex-direction: column;  
+  }
+
+  &--admin {
+    max-height: 80px;
+    padding: 20px 3%;
+
+    background-color: $background-ligth;
+
     &__SearchBarre {
-      display: flex;
-      flex-direction: column;  
-    } 
+      display: none;
+    }
   }
 }
+
+
+

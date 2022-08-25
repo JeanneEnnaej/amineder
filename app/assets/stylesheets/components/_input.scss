@@ -1,28 +1,27 @@
-.form-control{
+.form_label {
   font-size: 16px;
   line-height: 1.5;
-  background: $background-ligth;
-  border-color: $stroke-ligth;
   border-radius: 16px;
   color: $txtcolor-primary;
   border-style: solid;
-  border-width: 1px 1px 1px;
-  width: 600px;
-  padding: .5em 1em .5em 2.5em;
+  border-width: 1px;
+  padding: 10px 16px;
   @include box-shadow;
   transition: all 0.3s ease;
 } 
 
-.form-control::placeholder{
+
+
+.form-label::placeholder{
   color: $txtcolor-subtitle_ligth;
 }
 
-.form-control:hover {
+.form-label:hover {
   outline: none;
   border: 2px solid $stroke-dark;
 }
 
-.form-control:focus {
+.form-label:focus {
   outline: none;
   background-color: #FFF;
 }

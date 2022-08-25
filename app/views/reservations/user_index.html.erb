@@ -1,3 +1,5 @@
+<%= render "headerAdmin" %>
+
 <h1>Mes réservations</h1>
 <h2>Bonjour <%= current_user.first_name %> <%= current_user.last_name %></h2>
 <% @reservations.each do |reservation| %>
