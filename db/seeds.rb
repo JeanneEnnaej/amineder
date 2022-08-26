@@ -1,11 +1,13 @@
 # categories : sport , romantique, party, netflix and chill, travail, deprime, culture
 p "destroy tout"
+Amine.destroy_all
+Reservation.destroy_all
 MoodCategory.destroy_all
 Category.destroy_all
 Mood.destroy_all
 
 p 'créer categeories'
-categories = %w[ sport romantique party netflix_and_chill travail deprime culture ]
+categories = %w[ sport romantique fete detente travail deprime culture ]
 
 categories.each do |category|
   Category.create( name: category )
@@ -59,35 +61,35 @@ romantique.category = Category.find_by_name("romantique")
 romantique.mood = Mood.find_by_name("calin")
 romantique.save
 
-party = MoodCategory.new
-party.category = Category.find_by_name("party")
-party.mood = Mood.find_by_name("dynamique")
-party.save
+fete = MoodCategory.new
+fete.category = Category.find_by_name("fete")
+fete.mood = Mood.find_by_name("dynamique")
+fete.save
 
-party = MoodCategory.new
-party.category = Category.find_by_name("party")
-party.mood = Mood.find_by_name("festif")
-party.save
+fete = MoodCategory.new
+fete.category = Category.find_by_name("fete")
+fete.mood = Mood.find_by_name("festif")
+fete.save
 
-party = MoodCategory.new
-party.category = Category.find_by_name("party")
-party.mood = Mood.find_by_name("joyeux")
-party.save
+fete = MoodCategory.new
+fete.category = Category.find_by_name("fete")
+fete.mood = Mood.find_by_name("joyeux")
+fete.save
 
-netflix_and_chill = MoodCategory.new
-netflix_and_chill.category = Category.find_by_name("netflix_and_chill")
-netflix_and_chill.mood = Mood.find_by_name("calme")
-netflix_and_chill.save
+detente = MoodCategory.new
+detente.category = Category.find_by_name("detente")
+detente.mood = Mood.find_by_name("calme")
+detente.save
 
-netflix_and_chill = MoodCategory.new
-netflix_and_chill.category = Category.find_by_name("netflix_and_chill")
-netflix_and_chill.mood = Mood.find_by_name("fatigué")
-netflix_and_chill.save
+detente = MoodCategory.new
+detente.category = Category.find_by_name("detente")
+detente.mood = Mood.find_by_name("fatigué")
+detente.save
 
-netflix_and_chill = MoodCategory.new
-netflix_and_chill.category = Category.find_by_name("netflix_and_chill")
-netflix_and_chill.mood = Mood.find_by_name("calin")
-netflix_and_chill.save
+detente = MoodCategory.new
+detente.category = Category.find_by_name("detente")
+detente.mood = Mood.find_by_name("calin")
+detente.save
 
 travail = MoodCategory.new
 travail.category = Category.find_by_name("travail")
@@ -168,6 +170,6 @@ amine4.save!
 
 p "reservation"
 
-Reservation.create!(date: "2022/08/24", status: "pending", user_id: 1, amine_id: 1, message: "fdjfkdljfdsbfhjdklj")
+Reservation.create!(date: "2022/10/24", status: "pending", user_id: 1, amine_id: 1, message: "fdjfkdljfdsbfhjdklj")
 
 p "finito"
