@@ -49,14 +49,14 @@
                 <div class="popup--card--form">
                   <div class="popup--card--form--input">
                     <%= simple_form_for([amine, @reservation]) do |f| %>
-                      <div>  
+                      <div>
                         <p>Date :</p>
                         <%= f.input :date, label: false %>
                       </div>
                       <div class="input--place--max">
                         <p>Message :</p>
                         <%= f.input :message, label: false %>
-                      </div>  
+                      </div>
                       <%= f.button :submit %>
                     <% end %>
                   </div>
@@ -80,3 +80,5 @@
     <p>No Results</p>
   <% end %>
 </div>
+
+<%= render "pages/footer" %>
