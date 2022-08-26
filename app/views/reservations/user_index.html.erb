@@ -1,11 +1,11 @@
 <%= render "headerAdmin" %>
 
-<h1>Mes réservations</h1>
-<h2>Bonjour <%= current_user.first_name %> <%= current_user.last_name %></h2>
+<h1 class="account-title">Mes réservations</h1>
+<h2 class="account-title">Bonjour <%= current_user.first_name %> <%= current_user.last_name %></h2>
 
   <div class = container-filter>
-  <%= link_to "En attente", request.params.merge(sort: "pending") %>
-  <%= link_to "Validés", request.params.merge(sort: "accepted") %>
+  <%= link_to "En attente", request.params.merge(sort: "pending"), class:"button #{'active' if params[:sort] == 'pending' }" %>
+  <%= link_to "Validés", request.params.merge(sort: "accepted"), class:"button #{'active' if params[:sort] == 'accepted' }" %>
   </div>
 
 <div class="account-container">
@@ -16,19 +16,12 @@
           <%= cl_image_tag photo.key, crop: :fill %>
         <% end %>
         <div class="description-card">
-          <p>Prénom nom => <%= reservation.user.first_name %> <%= reservation.user.last_name %></p>
-          <p>Caratère => <%= reservation.amine.mood.name %></p>
-          <p>Description => <%= reservation.message %></p>
-          <p>Prix => <%= reservation.amine.price %>€</p>
-          <p>Date => <%= reservation.date %></p>
-          <p>Status => <%=reservation.status%></p>
+          <p><%= reservation.amine.name %></p>
+          <p>Caractéristique(s): <%= reservation.amine.mood.name %></p>
+          <p>Prix : <%= reservation.amine.price %>€</p>
+          <p>Date : <%= reservation.date %></p>
+          <p>Status : <%ireservation.status%></p>
         </div>
-          <%# <% if current_user == reservation.amine.owner %>
-            <%# <div class="choice">
-              <%= link_to "Accepter", accept_reservation_path(reservation) %>
-              <%# <%= link_to "Refuser", decline_reservation_path(reservation) %>
-            <%# </div> %>
-          <%# <% end %>
       </div>
     <% end %>
   </div>
