@@ -19,5 +19,9 @@
     <p>Photo :</p>
     <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
   </div>
-  <%= f.button :submit %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+      <%=  link_to "Retour", account_amines_path, class: "btn-back" %>
+    </div>
 <% end %>
