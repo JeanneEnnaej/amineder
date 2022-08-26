@@ -6,14 +6,14 @@
   <div>
     <h1 class="account-title">Mes amines</h1>
   </div>
-  <div class = container-filter>
-    <%= link_to "À valider", request.params.merge(sort: "pending"), class:"button #{'active' if params[:sort] == 'pending' }" %>
-    <%= link_to "Mes Amines", request.params.except(:sort) , class:"button #{'active' unless params[:sort].present? }" %>
-    <%= link_to "Validés", request.params.merge(sort: "accepted") , class:"button #{'active' if params[:sort] == 'accepted' }" %>
+  <div class="new-amine">
+    <%= link_to "Proposer un Amine", new_amine_path %>
   </div>
-    <div class="new-amine">
-      <span><%= link_to "Proposer un Amine",new_amine_path %><span>
-    </div>
+  <div class = container-filter>
+    <%= link_to "Réservations à valider", request.params.merge(sort: "pending"), class:"button #{'active' if params[:sort] == 'pending' }" %>
+    <%= link_to "Mes Amines", request.params.except(:sort) , class:"button #{'active' unless params[:sort].present? }" %>
+    <%= link_to "Réservations validées", request.params.merge(sort: "accepted") , class:"button #{'active' if params[:sort] == 'accepted' }" %>
+  </div>
   <div class="account-container">
     <div class="accountcard">
       <% if @contents[0].class.name == "Amine" %>
@@ -21,48 +21,10 @@
           <div class ="amine-card">
             <%= cl_image_tag amine.photos.first.key, crop: :fill if amine.photos.first.key %>
             <div class="description-card">
-              <p>Nom <%= amine.name %></p>
-              <p>Caractère => <%= amine.mood.name %></p>
-              <p>Description => <%= amine.description %></p>
-              <p>Prix => <%= amine.price %>€</p>
-            </div>
-            <div class="btn-container">
-              <div class="link" data-controller="reservation">
-                <div class="icone" data-action="click->reservation#showPopup">
-                  <i class="fa-solid fa-question"></i>
-                </div>
-                <div class="popup display-none" data-reservation-target="popup">
-                  <div class="placement">
-                    <div class="popup--card">
-                      <div class="column-display-flex">
-                        <div class="title-poppup">
-                          <h2>Nouvelle demande de location !<h2>
-                        </div>
-                        <div class="user-info">
-                          <div>
-                            <p class="avatar-bordered">image</p>
-                          </div>
-                          <div>
-                            <p>Message :</p>
-                          </div>
-                        </div>
-                        <div>
-                          <div>
-                            <%= cl_image_tag amine.photos.first.key, crop: :fill if amine.photos.first.key %>
-                          </div>
-                          <div class="content">
-                              <p>Prix :</p>
-                              <p><%=amine.price%>€</p>
-                              <p>Name :</p>
-                              <p><%=amine.name%></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
-                  </div>
-                </div>
-              </div>
+              <h3><%= amine.name %></h3>
+              <p>Caractère : <%= amine.mood.name %></p>
+              <p>Description : <%= amine.description %></p>
+              <p>Prix : <%= amine.price %>€</p>
             </div>
           </div>
         <% end %>
@@ -71,72 +33,27 @@
         <div class ="amine-card">
             <%= cl_image_tag reservation.amine.photos[0].key, crop: :fill if reservation.amine.photos[0].key %>
           <div class="description-card">
-            <p>Nom <%= reservation.amine.name %></p>
-            <p>Caractère => <%= reservation.amine.mood.name %></p>
-            <p>Description => <%= reservation.amine.description %></p>
-            <p>Prix => <%= reservation.amine.price %>€</p>
-            <p>date => <%=reservation.date %></p>
-            <p>Status => <%=reservation.status %></p>
+            <h3><%= reservation.amine.name %></h3>
+            <p>Prix : <%= reservation.amine.price %>€</p>
+            <p>Demande de réservation le : <%=reservation.date %></p>
+            <p>Message : <%= reservation.message %></p>
+            <p>Statut de la reservation : <%= reservation.status == "pending" ? "En attente" : "Validée"%></p>
           </div>
           <div class="btn-container">
-            <div class="link">
-              <%= link_to accept_reservation_path(reservation), data: {turbo_method: :patch} do %>
-                <div class="icone">
-                  <i class="fa-solid fa-check"></i>
-                </div>
-              <% end %>
-            </div>
-            <div class="link">
-              <%= link_to decline_reservation_path(reservation), data: {turbo_method: :patch} do %>
-                <div class="icone"><i class="fa-solid fa-xmark"></i></div>
-              <% end %>
-            </div>
-            <div class="link" data-controller="reservation">
-              <div class="icone" data-action="click->reservation#showPopup">
-                <i class="fa-solid fa-question"></i>
-              </div>
-              <div class="popup display-none" data-reservation-target="popup">
-                <div class="placement">
-                  <div class="popup--card">
-                    <div class="column-display-flex">
-                      <div class="title-poppup">
-                        <h2>Nouvelle demande de location !<h2>
-                      </div>
-                      <div class="user-info">
-                        <div>
-                          <p class="avatar-bordered">image</p>
-                        </div>
-                        <div>
-                          <p>Message :</p>
-                        </div>
-                      </div>
-                      <div>
-                        <div>
-                          <% if reservation.user.photo.key %>
-                            <%= cl_image_tag reservation.user.photo.key, crop: :fill if reservation.user.photo.key %>
-                          <%end%>
-                        </div>
-                        <div class="content">
-                            <p>Prix :</p>
-                            <p><%=reservation.amine.price%>€</p>
-                            <p>Name :</p>
-                            <p><%=reservation.amine.name%></p>
-                            <p>Date :</p>
-                            <p><%=reservation.date%></p>
-                        </div>
-                      </div>
-                      <div>
-                        <div class="btn-reservation">
-                        <%= link_to "Accepter", accept_reservation_path(reservation), data: {turbo_method: :patch} %>
-                        <%= link_to "Refuser", decline_reservation_path(reservation), data: {turbo_method: :patch} %>
-                        </div>
-                      </div>
-                    </div>
+            <% if reservation.status == "pending" %>
+              <div class="link">
+                <%= link_to accept_reservation_path(reservation), data: {turbo_method: :patch} do %>
+                  <div class="icone">
+                    <i class="fa-solid fa-check"></i>
                   </div>
-                <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
-                </div>
+                <% end %>
               </div>
-            </div>
+              <div class="link">
+                <%= link_to decline_reservation_path(reservation), data: {turbo_method: :patch} do %>
+                  <div class="icone"><i class="fa-solid fa-xmark"></i></div>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
         <% end %>
