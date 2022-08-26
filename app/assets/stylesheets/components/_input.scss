@@ -78,3 +78,46 @@ input::placeholder {
   justify-content: space-between;
   margin-top: 8px;
 }
+
+
+#reservation_message {
+  height: 280px;
+  width: 380px;
+  padding: 10px 16px;
+
+  background: $background-ligth;
+
+  border: 1px solid $stroke-ligth;
+  @include box-shadow-light;
+  border-radius: 16px;
+
+  resize: none;
+  overflow: auto;
+
+  &:focus {
+    outline: 1px solid $color-primary;
+  }
+}
+
+#reservation_date {
+  
+  &_2i {
+    flex-grow: 1;
+  }
+
+  &_1i, &_3i {
+    width: 100px; 
+  }
+
+  &_1i, &_2i, &_3i {
+    background: $background-ligth;
+    padding: 8px 8px;
+    border: 1px solid $stroke-ligth;
+    @include box-shadow-light;
+    border-radius: 16px;
+
+    &:focus {
+      outline: 1px solid $color-primary;
+    }
+  }
+}
