@@ -1,43 +1,98 @@
-<div class="header">
-  <div class="logo"><%= link_to "", "/" %></div>
-  <div class="header__menu__SearchBarre">
+<div class="fixed-column">
+  <div class="header">
+    <div class="logo"><%= link_to "", "/" %></div>
+    <div class="header__menu__SearchBarre">
 
-    <h2><span class="auto-type"></span></h2>
-    <h2>Hey Amine !</h2>
+      <h2 class="nomarg"><span class="auto-type"></span></h2>
+      <h2 class="nomarg">Hey Amine !</h2>
 
-    <%= form_with url: search_amines_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Calme ? Romantique?"
-      %>
-  <% end %>
-  </div>
-  <div class="color">
-  <div class="dropdown">
-      <button class="dropbtn">
-        <svg viewBox="0 0 100 80" width="40" height="40" class="rect--color">
-          <rect y="15"width="50" height="7"></rect>
-          <rect y="30" width="50" height="7"></rect>
-          <rect y="45" width="50" height="7"></rect>
-        </svg>
-        <div class="dropbtn--img">
-          <img src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3">
+      <%= form_with url: search_amines_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Calme ? Romantique?"
+        %>
+    <% end %>
+    </div>
+    <div class="color">
+    <div class="dropdown">
+        <button class="dropbtn">
+          <svg viewBox="0 0 100 80" width="40" height="40" class="rect--color">
+            <rect y="15"width="50" height="7"></rect>
+            <rect y="30" width="50" height="7"></rect>
+            <rect y="45" width="50" height="7"></rect>
+          </svg>
+          <div class="dropbtn--img">
+            <img src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3">
+          </div>
+        </button>
+        <div class="dropdown-content">
+          <% if current_user %>
+            <%= link_to "home", "/" %>
+            <%= link_to "Mes amines", account_amines_path %>
+            <%= link_to "Reservations", account_reservations_path %>
+            <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete}%>
+          <% else %>
+            <%= link_to "Connexion", new_user_session_path %>
+            <%= link_to "Inscription", new_user_registration_path %>
+          <% end %>
         </div>
-      </button>
-      <div class="dropdown-content">
-        <% if current_user %>
-          <%= link_to "home", "/" %>
-          <%= link_to "Mes amines", account_amines_path %>
-          <%= link_to "Reservations", account_reservations_path %>
-          <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete}%>
-        <% else %>
-          <%= link_to "Connexion", new_user_session_path %>
-          <%= link_to "Inscription", new_user_registration_path %>
-        <% end %>
       </div>
     </div>
   </div>
+  <div class="categories">
+
+    <div class="link">
+    <%= link_to search_amines_path(query: "sport") do %>
+      <div class="icone"><i class="fa-solid fa-bicycle"></i>
+      <span>Echappée sportive</span></div>
+    <% end %>
+    </div>
+
+    <div class="link">
+    <%= link_to search_amines_path(query: "romantique") do %>
+      <div class="icone"><i class="fa-solid fa-heart"></i>
+      <span>Instant romantique</span></div>
+    <% end %>
+    </div>
+
+    <div class="link">
+    <%= link_to search_amines_path(query: "fete") do %>
+      <div class="icone"><i class="fa-solid fa-champagne-glasses"></i>
+      <span>Evenement festif</span></div>
+    <% end %>
+    </div>
+
+    <div class="link">
+    <%= link_to search_amines_path(query: "detente") do %>
+      <div class="icone"><i class="fa-solid fa-couch"></i>
+      <span>Moment détente</span></div>
+    <% end %>
+    </div>
+
+    <div class="link">
+    <%= link_to search_amines_path(query: "travail") do %>
+      <div class="icone"><i class="fa-solid fa-briefcase"></i>
+      <span>Journée studieuse</span></div>
+    <% end %>
+    </div>
+
+    <div class="link">
+    <%= link_to search_amines_path(query: "déprime") do %>
+      <div class="icone"><i class="fa-solid fa-face-sad-tear"></i>
+      <span>Soirée déprime</span></div>
+    <% end %>
+    </div>
+
+    <div class="link">
+    <%= link_to search_amines_path(query: "culture") do %>
+      <div class="icone"><i class="fa-solid fa-building-columns"></i>
+      <span>Sortie culturelle</span></div>
+    <% end %>
+  </div>
+</div>
+
+
 </div>
 
      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>

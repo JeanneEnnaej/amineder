@@ -1,84 +1,86 @@
 <%= render "header" %>
 
-<h1>search</h1>
+<div class="containt">
+  <h3>Nous avons trouvé <%= @amines.count %> qui vous correspond :</h3>
 
-<div class="template__card">
-  <% if @amines.size > 0 %>
-    <%@amines.each do |amine| %>
-      <div class="searchcard">
-        <% amine.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"searchcard_image"%>
-        <% end %>
-        <div class="searchcard_infos">
-          <div class="searchcard_infos-left">
-            <h2 class="mgnone"><%= amine.name %></h2>
+  <div class="template__card">
+    <% if @amines.size > 0 %>
+      <%@amines.each do |amine| %>
+        <div class="searchcard">
+          <% amine.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"searchcard_image"%>
+          <% end %>
+          <div class="searchcard_infos">
+            <div class="searchcard_infos-left">
+              <h2 class="mgnone"><%= amine.name %></h2>
+            </div>
+            <div class="searchcard_infos-right">
+              <h3 class="mgnone"><%= amine.price %> €</h3>
+            </div>
           </div>
-          <div class="searchcard_infos-right">
-            <h3 class="mgnone"><%= amine.price %> €</h3>
-          </div>
-        </div>
-        <div class="searchcard_footer" data-controller="reservation">
-          <div class="align-tags">
-            <% amine.categories.each do |category| %>
-              <p class="tags"><%= category.name %></p>
-            <% end %>
-          </div>
-          <span data-action="click->reservation#showPopup" class="btn">Réserver</span>
-          <div class="popup display-none" data-reservation-target="popup">
-            <div class="placement">
-              <div class="popup--card">
-                <div class="popup--card--amine">
-                  <div class="group--image">
-                      <%= cl_image_tag amine.photos[0].key, crop: :fill %>
-                      <!-- <div>
+          <div class="searchcard_footer" data-controller="reservation">
+            <div class="align-tags">
+              <% amine.categories.each do |category| %>
+                <p class="tags"><%= category.name %></p>
+              <% end %>
+            </div>
+            <span data-action="click->reservation#showPopup" class="btn">Réserver</span>
+            <div class="popup display-none" data-reservation-target="popup">
+              <div class="placement">
+                <div class="popup--card">
+                  <div class="popup--card--amine">
+                    <div class="group--image">
                         <%= cl_image_tag amine.photos[0].key, crop: :fill %>
-                        <%= cl_image_tag amine.photos[0].key, crop: :fill %>
-                      </div> -->
+                        <!-- <div>
+                          <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                          <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                        </div> -->
+                    </div>
+                    <div class="popup--card--amine--details">
+                      <h2><%= amine.name %></h2>
+                      <div class="align-tags">
+                        <% amine.categories.each do |category| %>
+                          <p class="tags"><%= category.name %></p>
+                        <% end %>
+                      </div>
+                      <p>Mood : <%= amine.mood.name %></p>
+                      <p>description : <%= amine.description %></p>
+                    </div>
                   </div>
-                  <div class="popup--card--amine--details">
-                    <h2><%= amine.name %></h2>
-                    <div class="align-tags">
-                      <% amine.categories.each do |category| %>
-                        <p class="tags"><%= category.name %></p>
+                  <div class="popup--card--form">
+                    <div class="popup--card--form--input">
+                      <%= simple_form_for([amine, @reservation]) do |f| %>
+                        <div>
+                          <p>Date :</p>
+                          <%= f.input :date, label: false %>
+                        </div>
+                        <div class="input--place--max">
+                          <p>Message :</p>
+                          <%= f.input :message, label: false %>
+                        </div>
+                        <%= f.button :submit %>
                       <% end %>
                     </div>
-                    <p>Mood : <%= amine.mood.name %></p>
-                    <p>description : <%= amine.description %></p>
-                  </div>
-                </div>
-                <div class="popup--card--form">
-                  <div class="popup--card--form--input">
-                    <%= simple_form_for([amine, @reservation]) do |f| %>
-                      <div>
-                        <p>Date :</p>
-                        <%= f.input :date, label: false %>
+                    <div class="popup--card--form--details">
+                      <p>Afficher le détails du prix</p>
+                      <span class="rectangle"></span>
+                      <div class="popup--card--form--details--price">
+                        <p>Total</p>
+                        <p><%= amine.price %>€</p>
                       </div>
-                      <div class="input--place--max">
-                        <p>Message :</p>
-                        <%= f.input :message, label: false %>
-                      </div>
-                      <%= f.button :submit %>
-                    <% end %>
-                  </div>
-                  <div class="popup--card--form--details">
-                    <p>Afficher le détails du prix</p>
-                    <span class="rectangle"></span>
-                    <div class="popup--card--form--details--price">
-                      <p>Total</p>
-                      <p><%= amine.price %>€</p>
                     </div>
                   </div>
                 </div>
+                <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
               </div>
-              <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>No Results</p>
     <% end %>
-  <% else %>
-    <p>No Results</p>
-  <% end %>
+  </div>
 </div>
 
 <%= render "footer" %>
