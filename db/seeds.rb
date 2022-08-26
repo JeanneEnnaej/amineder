@@ -136,40 +136,4 @@ culture.category = Category.find_by_name("culture")
 culture.mood = Mood.find_by_name("calme")
 culture.save
 
-
-p "user"
-
-User.create!(first_name: "Toto", last_name: "Titi", email: "toto@toto.com", password: "totototo")
-User.create!(first_name: "Tata", last_name: "Tutu", email: "tata@tata.com", password: "tatatata")
-
-p "amine"
-
-amine1 = Amine.new(name: "Aminetest", price: 60, description: "Testtetststetstettststetstst")
-amine1.mood = Mood.find_by_name("calme")
-amine1.owner = User.find_by_last_name("Titi")
-amine1.photos.attach(io: File.open("images_seed/amine.jpg"), filename: 'amine.jpg')
-amine1.save!
-
-amine2 = Amine.new(name: "Aminebis", price: 80, description: "Testtetststetstettststetststiiiii")
-amine2.mood = Mood.find_by_name("curieux")
-amine2.owner = User.find_by_last_name("Titi")
-amine2.photos.attach(io: File.open("images_seed/amine.jpg"), filename: 'amine.jpg')
-amine2.save!
-
-amine3 = Amine.new(name: "Amineter", price: 70, description: "Testtetststetstettststetststiiiii")
-amine3.mood = Mood.find_by_name("festif")
-amine3.owner = User.find_by_last_name("Titi")
-amine3.photos.attach(io: File.open("images_seed/amine.jpg"), filename: 'amine.jpg')
-amine3.save!
-
-amine4 = Amine.new(name: "Aminequadro", price: 70, description: "Testtetststetstettststetststiiiii")
-amine4.mood = Mood.find_by_name("dynamique")
-amine4.owner = User.find_by_last_name("Titi")
-amine4.photos.attach(io: File.open("images_seed/amine.jpg"), filename: 'amine.jpg')
-amine4.save!
-
-p "reservation"
-
-Reservation.create!(date: "2022/10/24", status: "pending", user_id: 1, amine_id: 1, message: "fdjfkdljfdsbfhjdklj")
-
 p "finito"
