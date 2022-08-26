@@ -32,6 +32,7 @@
       &--details {
         display: flex;
         flex-direction: column;
+        max-width: 500px;
 
         .tags {
           margin: 4px;
