@@ -9,6 +9,12 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  .placement {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+  
 
   &--card {
     background-color: white;
@@ -96,10 +102,6 @@
   }
 }
 
-.placement {
-  display: flex;
-  gap: 8px;
-}
 
 .cross {
   cursor: pointer;
