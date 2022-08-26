@@ -13,10 +13,10 @@ class Reservation < ApplicationRecord
   end
 
   def decline!
-    @reservation.update!(status: "decline")
+    self.update!(status: "decline")
   end
 
   def accept!
-    @reservation.update!(status: "accept")
+    self.update!(status: "accepted")
   end
 end

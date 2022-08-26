@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :reservations, only: [] do
-    post :decline, on: :member
-    post :accept, on: :member
+    patch :decline, on: :member
+    patch :accept, on: :member
   end
 
   get 'account/amines', to: 'amines#user_index'

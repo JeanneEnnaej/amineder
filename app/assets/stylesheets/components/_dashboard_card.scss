@@ -26,12 +26,29 @@ flex-direction: row;
 column-gap: 8px;
 height: 250px;
 width: 700px;
+border: 2px solid $light-gray;
+border-radius: 16px 16px 16px  16px;
 
   img {
   object-fit: cover;
   border-radius: 16px 0px 0px 16px;
   }
 }
+
+.amine-card-user {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  height: 250px;
+  width: 600px;
+  border: 2px solid $light-gray;
+  border-radius: 16px 16px 16px  16px;
+
+    img {
+    object-fit: cover;
+    border-radius: 16px 0px 0px 16px;
+    }
+  }
 
 .btn-container {
   display: block;
@@ -69,6 +86,7 @@ width: 700px;
 .description-card {
 display: flex;
 flex-direction: column;
+object-fit: cover;
 
   p{
     margin-bottom: auto;
