@@ -1,9 +1,11 @@
 .categories {
+  background-color: #ffffff;
   display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  width: 90%;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
   padding-top: 10px;
+  border-bottom: 1px solid $background-dark;
 
 }
 

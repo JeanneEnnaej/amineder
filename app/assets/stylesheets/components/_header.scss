@@ -1,12 +1,7 @@
 .header {
   z-index: 10;
 
-  position: sticky;
-  top: 0;
-  right: 0;
-  left: 0;
-
-  max-height: 136px;
+  max-height: 90px;
   padding: 20px 3% 80px;
 
   display: flex;
@@ -30,4 +25,16 @@
       display: none;
     }
   }
+}
+
+.fixed-column {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+
+}
+
+.nomarg {
+  margin: 0 0 4px;
 }
