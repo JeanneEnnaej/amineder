@@ -1,7 +1,7 @@
 <div class="header">
     <div class="logo"><%= link_to "", "/" %></div>
   <div class="header__menu__SearchBarre">
-    <h2>Trouve ton amine parmis notre large sélections</h2>
+    <h2>Trouves ton Amine parmi notre large sélection</h2>
     <%= form_with url: search_amines_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
