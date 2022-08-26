@@ -1,13 +1,18 @@
 .footer-container {
+  position:absolute;
+  left: 0;
   width: 100%;
-  height: 80px;
+  height: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid $txtcolor-primary;
+  padding: 0;
+  margin: 0;
 
   .fa-copyright {
     color:white;
-    background-color: black;
+    background-color: $txtcolor-primary;
     border-radius: 50%;
   }
 
@@ -28,11 +33,11 @@
       display: flex;
       flex-direction: row;
       column-gap: 8px;
-      color: black;
+      color: $txtcolor-primary;
       ;
       .fa-globe {
         color:white;
-        background-color: black;
+        background-color: $txtcolor-primary;
         border-radius: 50%;
       }
     }
@@ -40,7 +45,7 @@
 
   p {
     margin: 0;
-    font-size: 13px;
+    font-size: 12px;
   }
 
 
