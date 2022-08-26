@@ -7,20 +7,20 @@
     <h1 class="account-title">Mes amines</h1>
   </div>
   <div class = container-filter>
-  <%= link_to "À valider", request.params.merge(sort: "pending") %>
-  <%= link_to "Mes Amines", request.params.except(:sort) %>
-  <%= link_to "Validés", request.params.merge(sort: "accepted") %>
+    <%= link_to "À valider", request.params.merge(sort: "pending") %>
+    <%= link_to "Mes Amines", request.params.except(:sort) %>
+    <%= link_to "Validés", request.params.merge(sort: "accepted") %>
   </div>
   <div class="account-container">
     <div class="accountcard">
-
-    <% @reservations.size == 0 ? contents = @amines : contents = @reservations %>
+      <% @reservations.size == 0 ? contents = @amines : contents = @reservations %>
       <% contents.each do |content| %>
         <% if contents.size == @amines.size %>
           <% object = content %>
         <% else %>
           <% object = content.amine  %>
         <% end %>
+
         <div class ="amine-card">
           <% object.photos.each do |photo| %>
             <%= cl_image_tag photo.key, crop: :fill %>
@@ -37,7 +37,9 @@
             <div class="link">
               <%if @amines.size == 0%>
                 <%= link_to accept_reservation_path(content), data: {turbo_method: :patch} do %>
-                  <div class="icone"><i class="fa-solid fa-check"></i></div>
+                  <div class="icone">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
                 <% end %>
               <% end %>
             </div>
@@ -48,8 +50,41 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="link">
-                  <div class="icone"><i class="fa-solid fa-question"></i></div>
+            <div class="link" data-controller="reservation">
+              <div class="icone" data-action="click->reservation#showPopup">
+                <i class="fa-solid fa-question"></i>
+              </div>
+              <div class="popup display-none" data-reservation-target="popup">
+                <div class="placement">
+                  <div class="popup--card">
+                    <div>
+                      <p>fefefefefe</p>
+                    </div>
+                    <div>
+                      <div>
+                        <p>image</p>
+                      </div>
+                      <div>
+                        <p>content</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <p>image</p>
+                      </div>
+                      <div>
+                        <p>Content</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <p>buttons</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
+              </div>
             </div>
           </div>
         </div>

@@ -24,16 +24,32 @@
 display: flex;
 flex-direction: row;
 column-gap: 8px;
-height: 250px;
-width: 700px;
+height: auto;
+width: 40%;
 border: 2px solid $light-gray;
 border-radius: 16px 16px 16px  16px;
 
-  img {
+img {
   object-fit: cover;
   border-radius: 16px 0px 0px 16px;
+  width: 25%;
+}
+}
+
+.description-card {
+display: flex;
+flex-direction: column;
+max-height: 100%;
+padding: 8px;
+row-gap: 8px;
+flex-grow: 1;
+
+  p{
+    text-align: left;
+    margin: 0;
   }
 }
+
 
 .amine-card-user {
   display: flex;
@@ -44,20 +60,19 @@ border-radius: 16px 16px 16px  16px;
   border: 2px solid $light-gray;
   border-radius: 16px 16px 16px  16px;
 
-    img {
+  img {
     object-fit: cover;
     border-radius: 16px 0px 0px 16px;
-    }
   }
+}
 
 .btn-container {
   display: block;
   background-color: $yellow;
-  width: 200px;
   border-radius: 0px 16px 16px 0px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 
   .icone{
   display: flex;
@@ -83,17 +98,6 @@ border-radius: 16px 16px 16px  16px;
 }
 
 
-.description-card {
-display: flex;
-flex-direction: column;
-object-fit: cover;
-
-  p{
-    margin-bottom: auto;
-    display: flex;
-    text-align: left;
-  }
-}
 
 .account-title{
   display: flex;
