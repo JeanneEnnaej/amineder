@@ -62,43 +62,80 @@
   <h4>Voici quelques Amines qui pourraient vous plaire :</h4>
   <p id="voirtous"><%= link_to 'Voir tous ➝', search_amines_path(query: "")%></p>
 </div>
+<div class="display-grid">
 
-  <div>
-    <div class="classcard">
-      <div class= "homecard">
-        <% @amines.first(2).each do |amine| %>
-          <div class="card">
-            <%= cl_image_tag amine.photos.first.key, crop: :fill %>
-            <div class="textcard">
-              <div>
-                <p class="card-title"><%= amine.name %></p>
-                <p class="card-mood"><%= amine.mood.name %></p>
-              </div>
-              <div class="price">
-                <p><%= amine.price %>€</p>
-              </div>
-            </div>
+    <!-- Two basics card-->
+  
+    <% @amines.first(4).each do |amine| %>
+      <div class="searchcard">
+        <%= cl_image_tag amine.photos[0].key, height: 300, width: 400, crop: :fill, class:"searchcard_image"%>
+        <div class="searchcard_infos">
+          <div class="searchcard_infos-left">
+            <h2 class="mgnone"><%= amine.name %></h2>
           </div>
-        <% end %>
-      </div>
-
-      <div class="homecard">
-        <div class="card">
-          <%= cl_image_tag @amines.last.photos.first.key, crop: :fill %>
-          <div class="textcard">
-            <div>
-              <p class="card-title"><%= @amines.last.name %></p>
-              <p class="card-mood"><%= @amines.last.mood.name %></p>
-            </div>
-            <div class="price">
-              <p><%= @amines.last.price %>€</p>
+          <div class="searchcard_infos-right">
+            <h3 class="mgnone"><%= amine.price %> €</h3>
+          </div>
+        </div>
+        <div class="searchcard_footer" data-controller="reservation">
+          <div class="align-tags">
+            <% amine.categories.each do |category| %>
+              <p class="tags"><%= category.name %></p>
+            <% end %>
+          </div>
+          <span data-action="click->reservation#showPopup" class="btn">Réserver</span>
+          <div class="popup display-none" data-reservation-target="popup">
+            <div class="placement">
+              <div class="popup--card">
+                <div class="popup--card--amine">
+                  <div class="group--image">
+                      <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                      <!-- <div>
+                        <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                        <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                      </div> -->
+                  </div>
+                  <div class="popup--card--amine--details">
+                    <h2><%= amine.name %></h2>
+                    <div class="align-tags">
+                      <% amine.categories.each do |category| %>
+                        <p class="tags"><%= category.name %></p>
+                      <% end %>
+                    </div>
+                    <p>Mood : <%= amine.mood.name %></p>
+                    <p>description : <%= amine.description %></p>
+                  </div>
+                </div>
+                <div class="popup--card--form">
+                  <div class="popup--card--form--input">
+                    <%= simple_form_for([amine, @reservation]) do |f| %>
+                      <div>  
+                        <p>Date :</p>
+                        <%= f.input :date, label: false %>
+                      </div>
+                      <div class="input--place--max">
+                        <p>Message :</p>
+                        <%= f.input :message, label: false %>
+                      </div>  
+                      <%= f.button :submit %>
+                    <% end %>
+                  </div>
+                  <div class="popup--card--form--details">
+                    <p>Afficher le détails du prix</p>
+                    <span class="rectangle"></span>
+                    <div class="popup--card--form--details--price">
+                      <p>Total</p>
+                      <p><%= amine.price %>€</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <p id="voirtous"><%= link_to 'Voir tous ➝', search_amines_path(query: "")%></p>
+    <% end %>
   </div>
- </div>
-
+</div>
 <%= render "pages/footer" %>

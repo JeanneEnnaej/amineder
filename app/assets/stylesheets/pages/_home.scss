@@ -11,6 +11,13 @@ body {
   margin: 0 auto;
   width: 60%;
 
+  .display-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+  }
+
   #voirtous {
     text-align: end;
     font-size: 22px;
