@@ -25,26 +25,50 @@
           </div>
           <span data-action="click->reservation#showPopup" class="btn">Réserver</span>
           <div class="popup display-none" data-reservation-target="popup">
-            <div class="popup--card">
-              <div class="popup--card--amine">
-                <div class="group--image">
-                    <%= cl_image_tag amine.photos[0].key, crop: :fill %>
-                    <!-- <div>
+            <div class="placement">
+              <div class="popup--card">
+                <div class="popup--card--amine">
+                  <div class="group--image">
                       <%= cl_image_tag amine.photos[0].key, crop: :fill %>
-                      <%= cl_image_tag amine.photos[0].key, crop: :fill %>
-                    </div> -->
+                      <!-- <div>
+                        <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                        <%= cl_image_tag amine.photos[0].key, crop: :fill %>
+                      </div> -->
+                  </div>
+                  <div class="popup--card--amine--details">
+                    <h2><%= amine.name %></h2>
+                    <div class="align-tags">
+                      <% amine.categories.each do |category| %>
+                        <p class="tags"><%= category.name %></p>
+                      <% end %>
+                    </div>
+                    <p>Mood : <%= amine.mood.name %></p>
+                    <p>description : <%= amine.description %></p>
+                  </div>
                 </div>
-                <h2>Amine name => <%= amine.name %></h2>
-                <p>Caractère => <%= amine.mood.name %></p>
-                <p>Description => <%= amine.description %></p>
-                <p>Price => <%= amine.price %>€</p>
-              </div>
-              <div class="popup--card--form">
-                <%= simple_form_for([amine, @reservation]) do |f| %>
-                  <%= f.input :date %>
-                  <%= f.input :message %>
-                  <%= f.button :submit %>
-                <% end %>
+                <div class="popup--card--form">
+                  <div class="popup--card--form--input">
+                    <%= simple_form_for([amine, @reservation]) do |f| %>
+                      <div>  
+                        <p>Date :</p>
+                        <%= f.input :date, label: false %>
+                      </div>
+                      <div class="input--place--max">
+                        <p>Message :</p>
+                        <%= f.input :message, label: false %>
+                      </div>  
+                      <%= f.button :submit %>
+                    <% end %>
+                  </div>
+                  <div class="popup--card--form--details">
+                    <p>Afficher le détails du prix</p>
+                    <span class="rectangle"></span>
+                    <div class="popup--card--form--details--price">
+                      <p>Total</p>
+                      <p><%= amine.price %>€</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <i class="fa-solid fa-xmark cross" data-action="click->reservation#showPopup"></i>
             </div>
