@@ -10,7 +10,7 @@
 <div class="display-grid">
 
     <!-- Two basics card-->
-    <% if @amines[0] ==! nil %>
+    <% if @amines[0].class.name == "Amine" %>
     <% @amines.each do |amine| %>
       <div class="searchcard">
         <%= cl_image_tag amine.photos[0].key, height: 300, width: 400, crop: :fill, class:"searchcard_image"%>
