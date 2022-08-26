@@ -10,8 +10,8 @@
 <div class="display-grid">
 
     <!-- Two basics card-->
-  
-    <% @amines.first(4).each do |amine| %>
+    <% if @amines[0] ==! nil %>
+    <% @amines.each do |amine| %>
       <div class="searchcard">
         <%= cl_image_tag amine.photos[0].key, height: 300, width: 400, crop: :fill, class:"searchcard_image"%>
         <div class="searchcard_infos">
@@ -54,14 +54,14 @@
                 <div class="popup--card--form">
                   <div class="popup--card--form--input">
                     <%= simple_form_for([amine, @reservation]) do |f| %>
-                      <div>  
+                      <div>
                         <p>Date :</p>
                         <%= f.input :date, label: false %>
                       </div>
                       <div class="input--place--max">
                         <p>Message :</p>
                         <%= f.input :message, label: false %>
-                      </div>  
+                      </div>
                       <%= f.button :submit %>
                     <% end %>
                   </div>
@@ -80,6 +80,7 @@
           </div>
         </div>
       </div>
+    <% end %>
     <% end %>
   </div>
 </div>
