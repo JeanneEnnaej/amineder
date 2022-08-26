@@ -1,8 +1,23 @@
 <%= simple_form_for(amine) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :mood_id, collection: Mood.all %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <div>
+    <p>Nom :</p>
+    <%= f.input :name, label: false %>
+  </div>
+  <div>
+    <p>Prix :</p>
+    <%= f.input :price, label: false %>
+  </div>
+  <div class="input--place--max">
+    <p>Message :</p>
+    <%= f.input :description, label: false %>
+  </div>
+  <div>
+    <p>Caractère :</p>
+    <%= f.input :mood_id, collection: Mood.all, label: false %>
+  </div>
+  <div>
+    <p>Photo :</p>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
+  </div>
   <%= f.button :submit %>
 <% end %>

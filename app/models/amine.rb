@@ -6,7 +6,7 @@ class Amine < ApplicationRecord
   has_many_attached :photos
   has_many :reservations
 
-  validates :name, :price, :description, presence: true
+  validates :name, :price, :description, :mood, presence: true
   validates :name, uniqueness: true, length: { minimum: 4 }
   validates :price, numericality: { only_integer: true }
   validates :description, length: { minimum: 15 }
