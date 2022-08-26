@@ -29,15 +29,13 @@ class AminesController < ApplicationController
       # elsif params[:sort] == "pending"
       #   @amines = Reservation.where(status: "pending").map(&:amine)
       # end
-      @reservations = Reservation.where("status = ?", params[:sort])
-      @amines = []
+      @contents = Reservation.where("status = ?", params[:sort])
       #.map(&:amine)
 
   ##  Mes Amines
     else
       puts "tous mes amines"
-      @amines = Amine.where(owner: current_user)
-      @reservations = []
+      @contents = Amine.where(owner: current_user)
     end
   end
 

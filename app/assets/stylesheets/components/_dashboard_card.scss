@@ -119,3 +119,15 @@ padding-right: 50px;
 
 
 }
+
+.new-amine {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 30px;
+
+  .span{
+    border: 2px solid $light-gray;
+    border-radius: 16px;
+
+  }
+}
