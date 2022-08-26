@@ -1,7 +1,7 @@
 <div class="header header--admin">
     <div class="logo"><%= link_to "", "/" %></div>
     <div class="header--admin__SearchBarre">
-      <h2>Trouve ton amine parmis notre large sélections</h2>
+      <h2>Trouves ton Amine parmi notre large sélection</h2>
       <%= form_with url: search_amines_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
@@ -22,14 +22,11 @@
         </div>
       </button>
       <div class="dropdown-content">
-        <%= link_to "home", "/" %>
+        <%= link_to "Accueil", "/" %>
         <%= link_to "Mes amines", account_amines_path %>
-        <%= link_to "Reservations", account_reservations_path %>
+        <%= link_to "Mes reservations", account_reservations_path %>
         <%= link_to "Déconnexion", destroy_user_session_path %>
       </div>
-    </div> 
+    </div>
   </div>
 </div>
-
-
-    
