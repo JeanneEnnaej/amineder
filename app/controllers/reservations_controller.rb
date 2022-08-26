@@ -17,12 +17,13 @@ class ReservationsController < ApplicationController
   end
 
   def accept
-    @reservation.accept!
+    @reservation.update!(status: "accepted")
     redirect_to test_path
   end
 
   def user_index
     @reservations = Reservation.where("reservations.user_id = ?", current_user)
+    @reservations = Reservation.where("status = ?", params[:sort])
   end
 
   private

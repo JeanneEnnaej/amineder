@@ -30,12 +30,27 @@
             <p>Caractère => <%= object.mood.name %></p>
             <p>Description => <%= object.description %></p>
             <p>Prix => <%= object.price %>€</p>
+            <p>defefes => <%=content.date if @amines.size == 0 %></p>
             <p>Status => <%=content.status if @amines.size == 0 %></p>
           </div>
           <div class="btn-container">
-            <div class="icone"><i class="fa-solid fa-check"></i></div>
-            <div class="icone"><i class="fa-solid fa-xmark"></i></div>
-            <div class="icone"><i class="fa-solid fa-question"></i></div>
+            <div class="link">
+              <%if @amines.size == 0%>
+                <%= link_to accept_reservation_path(content), data: {turbo_method: :patch} do %>
+                  <div class="icone"><i class="fa-solid fa-check"></i></div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="link">
+              <%if @amines.size == 0%>
+                <%= link_to decline_reservation_path(content), data: {turbo_method: :patch} do %>
+                  <div class="icone"><i class="fa-solid fa-xmark"></i></div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="link">
+                  <div class="icone"><i class="fa-solid fa-question"></i></div>
+            </div>
           </div>
         </div>
       <% end %>

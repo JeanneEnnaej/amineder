@@ -1,12 +1,15 @@
 <div class="header">
   <div class="logo"><%= link_to "", "/" %></div>
   <div class="header__menu__SearchBarre">
-    <h2>Trouve ton amine parmis notre large sélections</h2>
+
+    <h2><span class="auto-type"></span></h2>
+    <h2>Hey Amine !</h2>
+
     <%= form_with url: search_amines_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Trouves un Amine"
+        placeholder: "Essayez de rechercher ''boire un verre'' ou ''Amine romantique''"
       %>
   <% end %>
   </div>
@@ -36,3 +39,13 @@
     </div>
   </div>
 </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <script>
+        var typed = new Typed(".auto-type", {
+          strings: ["Envie de boire un verre ?", "Besoin d'une oreille attentive ?", "Envie de faire un foot ?"],
+          typeSpeed: 50,
+          backSpeeed: 50,
+          loop: true,
+        })
+      </script>
